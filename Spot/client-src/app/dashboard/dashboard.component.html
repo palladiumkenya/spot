@@ -2,7 +2,7 @@
 <h3>{{ title }} </h3>
 <p-messages [(value)]="errorMessage"></p-messages>
 <p-dataTable [value]="facilities"
-             [sortMode]="multiple"
+             sortMode="multiple"
              sortField="stats.lastUpdate" sortOrder="1"
              [loading]="loading"  loadingIcon="fa-spinner fa-pulse"
              emptyMessage="No stats found" [responsive]="true"
