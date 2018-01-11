@@ -5,7 +5,7 @@ namespace Spot.StatsManagement.Core.Interfaces.Repositories
 {
     public interface IFacilityRepository
     {
-        IEnumerable<Facility> GetAll();
-        IEnumerable<Facility> GetAllBy(string searchItem);
+        IEnumerable<Facility> GetAll(bool inculdeStats=false);
+        IEnumerable<Facility> GetAllBy(string searchItem, bool inculdeStats = false);
     }
 }

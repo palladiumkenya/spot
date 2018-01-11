@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using Spot.StatsManagement.Core.Interfaces.Repositories;
-using Spot.StatsManagement.Core.Model;
 using Spot.StatsManagement.Infrastructure.Repository;
 
 namespace Spot.StatsManagement.Infrastructure.Tests.Repository
@@ -16,7 +14,6 @@ namespace Spot.StatsManagement.Infrastructure.Tests.Repository
 
        private SpotContext _context;
        private IFacilityRepository _facilityRepository;
-       private List<Facility> _facilities;
 
        [SetUp]
        public void SetUp()
@@ -31,22 +28,11 @@ namespace Spot.StatsManagement.Infrastructure.Tests.Repository
                .Options;
 
            _context = new SpotContext(options);
-            _context.RemoveRange(_context.PatientExtracts);
-           _context.RemoveRange(_context.Facilities);
-           _context.SaveChanges();
-
-           _facilities=new List<Facility>();
-           _facilities = TestHelper.GetTestData(2, 5).ToList();
-
-            _context.Facilities.AddRange(_facilities);
-           _context.SaveChanges();
-
-
            _facilityRepository = new FacilityRepository(_context);
        }
 
        [Test]
-       public void should_Get_All_Faciliies()
+       public void should_Get_All_Facilities()
        {
            var fac = _facilityRepository.GetAll().ToList();
 
@@ -54,6 +40,72 @@ namespace Spot.StatsManagement.Infrastructure.Tests.Repository
            foreach (var facility in fac)
            {
                Console.WriteLine(facility);
+           }
+       }
+
+       [Test]
+       public void should_Get_All_Facilities_With_Stats()
+       {
+           var facilities = _facilityRepository.GetAll(true).ToList();
+           Assert.True(facilities.Count > 0);
+
+           var fac = facilities.First();
+            Assert.NotNull(fac.Stats);
+           
+           foreach (var facility in facilities)
+           {
+               Console.WriteLine($"{facility} | {facility.Stats}");
+           }
+       }
+        [Test]
+       public void should_Get_All_Facilities_By_Code()
+       {
+           var facilities = _facilityRepository.GetAllBy("12870").ToList();
+
+           Assert.True(facilities.Count > 0);
+           foreach (var facility in facilities)
+           {
+               Console.WriteLine(facility);
+           }
+       }
+       [Test]
+       public void should_Get_All_Facilities_By_Code_With_Stats()
+       {
+           var facilities = _facilityRepository.GetAllBy("12870",true).ToList();
+           Assert.True(facilities.Count > 0);
+
+           var fac = facilities.First();
+           Assert.NotNull(fac.Stats);
+
+           foreach (var facility in facilities)
+           {
+               Console.WriteLine($"{facility} | {facility.Stats}");
+           }
+        }
+
+       [Test]
+       public void should_Get_All_Facilities_By_Name()
+       {
+           var facilities = _facilityRepository.GetAllBy("amur").ToList();
+
+           Assert.True(facilities.Count > 0);
+           foreach (var facility in facilities)
+           {
+               Console.WriteLine(facility);
+           }
+       }
+       [Test]
+       public void should_Get_All_Facilities_By_Name_With_Stats()
+       {
+           var facilities = _facilityRepository.GetAllBy("amur", true).ToList();
+           Assert.True(facilities.Count > 0);
+
+           var fac = facilities.First();
+           Assert.NotNull(fac.Stats);
+
+           foreach (var facility in facilities)
+           {
+               Console.WriteLine($"{facility} | {facility.Stats}");
            }
        }
     }

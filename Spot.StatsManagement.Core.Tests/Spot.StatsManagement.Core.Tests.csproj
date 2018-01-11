@@ -13,7 +13,12 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
     <PackageReference Include="NUnit" Version="3.9.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
+    <PackageReference Include="NBuilder" Version="5.0.0" />
     <PackageReference Include="Serilog" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Spot.StatsManagement.Core\Spot.StatsManagement.Core.csproj" />
   </ItemGroup>
 
 </Project>

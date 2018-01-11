@@ -11,7 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using Spot.StatsManagement.Core.Interfaces.Repositories;
 using Spot.StatsManagement.Infrastructure;
+using Spot.StatsManagement.Infrastructure.Repository;
 
 namespace Spot
 {
@@ -39,10 +41,12 @@ namespace Spot
 
             var connectionString = Configuration["connectionStrings:DWAPICentralConnection"];
             services.AddDbContext<SpotContext>(o => o.UseSqlServer(connectionString));
+
+            services.AddScoped<IFacilityRepository, FacilityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SpotContext spotContext)
         {
             if (env.IsDevelopment())
             {
@@ -65,8 +69,9 @@ namespace Spot
             app.UseMvcWithDefaultRoute();
             app.UseDefaultFiles();
             app.UseStaticFiles();
-
-          
+            Log.Debug("Database initializing...");
+            spotContext.CreateViews();
+            Log.Debug("Database initialized !");
             Log.Debug(@"---------------------------------------------------------------------------------------------------");
             Log.Debug
             (@"
