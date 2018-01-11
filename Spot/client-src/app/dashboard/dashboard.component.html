@@ -4,11 +4,10 @@
 <p-dataTable [value]="facilities"
              [sortMode]="multiple"
              sortField="stats.lastUpdate" sortOrder="1"
-             [paginator]="true"  [loading]="loading"  loadingIcon="fa-spinner fa-pulse"
+             [loading]="loading"  loadingIcon="fa-spinner fa-pulse"
              emptyMessage="No stats found"
-             [reorderableColumns]="true" columnResizeMode="fit" [resizableColumns]="true"
-             [rows]="1000"
-             [rowsPerPageOptions]="[1,50,100,500,1000,10000]"  [totalRecords]="recordCount"
+             [reorderableColumns]="true" columnResizeMode="fit" [resizableColumns]="true" [paginator]="true" [rows]="500"
+              [totalRecords]="recordCount"
 
 >
     <p-column field="code" header="MFL" [filter]="true"></p-column>
