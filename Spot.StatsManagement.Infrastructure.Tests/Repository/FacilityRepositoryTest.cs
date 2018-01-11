@@ -32,6 +32,14 @@ namespace Spot.StatsManagement.Infrastructure.Tests.Repository
        }
 
        [Test]
+       public void should_Get_Facilities_Count()
+       {
+           var count = _facilityRepository.GetCount();
+
+           Assert.True(count > 0);
+          
+       }
+        [Test]
        public void should_Get_All_Facilities()
        {
            var fac = _facilityRepository.GetAll().ToList();

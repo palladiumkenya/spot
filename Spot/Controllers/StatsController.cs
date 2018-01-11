@@ -36,6 +36,22 @@ namespace Spot.Controllers
             }
         }
 
+        // GET: api/Stats/Count
+        [HttpGet("count")]
+        public IActionResult GetCount()
+        {
+            try
+            {
+                var count = _facilityRepository.GetCount();
+                return Ok(count);
+            }
+            catch (Exception e)
+            {
+                Log.Error($"{e}");
+                return StatusCode(500, $"{e.Message}");
+            }
+        }
+
         // GET: api/Stats/search
         [HttpGet("{search}")]
         public IActionResult Get(string search)

@@ -16,6 +16,11 @@ namespace Spot.StatsManagement.Infrastructure.Repository
            _context = context;
        }
 
+       public int GetCount()
+       {
+           return _context.Facilities.Select(x => x.Id).ToList().Count;
+       }
+
        public IEnumerable<Facility> GetAll(bool inculdeStats = false)
        {
            var facilities = _context.Facilities;

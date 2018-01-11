@@ -29,8 +29,4 @@
     <ProjectReference Include="..\Spot.StatsManagement.Infrastructure\Spot.StatsManagement.Infrastructure.csproj" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="ng build --aot" />
-  </Target>
-
 </Project>
