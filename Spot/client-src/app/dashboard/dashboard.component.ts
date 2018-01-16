@@ -45,7 +45,6 @@ export class DashboardComponent implements OnInit {
                     this.errorMessage.push({severity: 'error', summary: 'Error Loading Summary', detail: <any>e});
                 },
                 () => {
-                    this.loading = false;
                     console.log(this.recordCount);
                 }
             );
