@@ -1,6 +1,4 @@
-export interface Stat {
-    noOfPatients: number;
-    lastUpdate: Date;
+export interface Info {
+    county: string;
     facilityId: string;
-    timeAgo: string;
 }

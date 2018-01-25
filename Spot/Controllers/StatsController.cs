@@ -38,8 +38,19 @@ namespace Spot.Controllers
 
         // GET: api/Stats/Count
         [HttpGet("count")]
-        public IActionResult GetCount()
+        public async Task<IActionResult> GetCount()
         {
+
+            try
+            {
+                await _facilityRepository.UpdateFacilityInfo();
+            }
+            catch (Exception e)
+            {
+                Log.Error($"error updating stats");
+                Log.Error($"{e}");
+            }
+
             try
             {
                 var count = _facilityRepository.GetCount();
