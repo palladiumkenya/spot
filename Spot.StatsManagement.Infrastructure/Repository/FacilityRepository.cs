@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Spot.StatsManagement.Core.Interfaces.Repositories;
 using Spot.StatsManagement.Core.Model;
@@ -28,6 +29,7 @@ namespace Spot.StatsManagement.Infrastructure.Repository
            if (inculdeStats)
                return facilities
                    .Include(x => x.Stats)
+                   .Include(x=>x.Info)
                    .ToList();
            return facilities.ToList();
        }
@@ -46,6 +48,7 @@ namespace Spot.StatsManagement.Infrastructure.Repository
                 if (inculdeStats)
                     return facilities
                         .Include(x => x.Stats)
+                        .Include(x => x.Info)
                         .ToList();
 
                 return facilities.ToList();
@@ -58,10 +61,28 @@ namespace Spot.StatsManagement.Infrastructure.Repository
             if (inculdeStats)
                 return facilitiesByName
                     .Include(x => x.Stats)
+                    .Include(x => x.Info)
                     .ToList();
 
             return facilitiesByName.ToList();
 
         }
-    }
+
+       public Task<int> UpdateFacilityInfo()
+       {
+           var sql = @"
+                    UPDATE       
+	                    MasterFacility
+                    SET                
+	                    FacilityId = f.Id
+                    FROM            
+	                    MasterFacility INNER JOIN
+	                    Facility AS f ON MasterFacility.Code = f.Code
+                    Where
+	                    MasterFacility.FacilityId is null
+            ";
+
+           return _context.Database.ExecuteSqlCommandAsync(sql);
+       }
+   }
 }

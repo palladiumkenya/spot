@@ -1,4 +1,5 @@
 import {Stat} from './stat';
+import {Info} from './info';
 
 export interface Faciltiy {
     id: string;
@@ -8,4 +9,5 @@ export interface Faciltiy {
     project: string;
     created: Date;
     stats: Stat;
+    info?: Info;
 }

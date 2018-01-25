@@ -16,7 +16,7 @@ namespace Spot.StatsManagement.Core.Model
         public string Project { get; set; }
         public DateTime? Created { get; set; }
         public FacilityStat Stats { get; set; }
-      
+        public FacilityInfo Info { get; set; }
         public override string ToString()
         {
             return $"{Code} - {Name}";

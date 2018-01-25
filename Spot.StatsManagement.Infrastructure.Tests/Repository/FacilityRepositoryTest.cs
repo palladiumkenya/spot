@@ -116,5 +116,22 @@ namespace Spot.StatsManagement.Infrastructure.Tests.Repository
                Console.WriteLine($"{facility} | {facility.Stats}");
            }
        }
+
+       [Test]
+       public void should_Update_Facility_Info_With_County()
+       {
+           var count = _facilityRepository.UpdateFacilityInfo().Result;
+
+           var facilities = _facilityRepository.GetAll(true).ToList();
+           Assert.True(facilities.Count > 0);
+
+           var fac = facilities.First();
+           Assert.NotNull(fac.Info);
+
+           foreach (var facility in facilities)
+           {
+               Console.WriteLine($"{facility} | {facility.Info}");
+           }
+        }
     }
 }

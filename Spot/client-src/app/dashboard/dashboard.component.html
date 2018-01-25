@@ -1,16 +1,18 @@
 <p-breadcrumb [model]="bcItems" [home]="bcHome"></p-breadcrumb>
-<h3>{{ title }} </h3>
+<h3>{{ title }}  <span *ngIf="!loading">| Showing: {{sites.totalRecords }} or {{ recordCount }}</span></h3>
+<button type="button" pButton icon="fa-file-o" iconPos="left" label="Export All" (click)="sites.exportCSV()"></button>
 <p-messages [(value)]="errorMessage"></p-messages>
 <p-dataTable [value]="facilities"
              sortField="stats.lastUpdate" [sortOrder]="-1"
              [loading]="loading"  loadingIcon="fa-spinner fa-pulse"
              emptyMessage="No stats found" [responsive]="true"
              [reorderableColumns]="true" columnResizeMode="fit" [resizableColumns]="true" [paginator]="true" [rows]="500"
-              [totalRecords]="recordCount"
-
->
+             [totalRecords]="recordCount"
+             exportFilename="DwapiSpot"
+             #sites>
     <p-column field="code" header="MFL" [filter]="true"></p-column>
-    <p-column field="name" header="Facility" sortable="true" [filter]="true"  filterMatchMode="contains"></p-column>
+    <p-column field="info.county" header="County" sortable="true" [filter]="true"  filterMatchMode="contains"></p-column>
+    <p-column field="name" header="Facility" sortable="true" [filter]="true"  filterMatchMode="contains"></p-column>np
     <p-column field="stats.noOfPatients" header="Patients" sortable="true"></p-column>
     <p-column field="stats.lastUpdate" header="Last Update" sortable="true">
         <ng-template let-col let-facility="rowData" pTemplate="body">
@@ -24,3 +26,5 @@
 
     </ng-template>
 </p-dataTable>
+<h3> <span *ngIf="!loading">Showing: {{sites.totalRecords }} or {{ recordCount }}</span></h3>
+

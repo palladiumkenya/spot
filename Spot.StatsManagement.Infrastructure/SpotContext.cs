@@ -9,6 +9,7 @@ namespace Spot.StatsManagement.Infrastructure
     {
         public DbSet<Facility> Facilities { get; set; }
         public DbSet<FacilityStat> FacilityStats { get; set; }
+        public DbSet<FacilityInfo> FacilityInfos { get; set; }
 
         public SpotContext(DbContextOptions options) : base(options)
         {
@@ -20,12 +21,22 @@ namespace Spot.StatsManagement.Infrastructure
                 .ToTable("FacilityStat")
                 .HasKey(x=>x.FacilityId);
 
+            modelBuilder.Entity<FacilityInfo>()
+                .ToTable("FacilityInfo")
+                .HasKey(x => x.FacilityId);
+
+
             modelBuilder.Entity<FacilityStat>().Ignore(x=>x.TimeAgo);
 
             modelBuilder.Entity<Facility>()
                 .HasOne(a => a.Stats)
                 .WithOne(b => b.Facility)
                 .HasForeignKey<FacilityStat>(b => b.FacilityId);
+
+            modelBuilder.Entity<Facility>()
+                .HasOne(a => a.Info)
+                .WithOne(b => b.Facility)
+                .HasForeignKey<FacilityInfo>(b => b.FacilityId);
         }
 
         public void CreateViews()
@@ -47,6 +58,34 @@ namespace Spot.StatsManagement.Infrastructure
 	                            PatientExtract
                             GROUP BY 
 	                            FacilityId
+                            ')
+                    END
+
+            ");
+
+            }
+            catch (Exception e)
+            {
+                Log.Debug($"{e}");
+            }
+
+            try
+            {
+                Database.ExecuteSqlCommand(
+                    @"
+               
+                IF OBJECT_ID('dbo.FacilityInfo') IS NULL
+                    BEGIN
+                        EXECUTE('
+	                        
+                            create view FacilityInfo
+	                        as
+                           SELECT        
+	                            FacilityId, County
+                            FROM            
+	                            MasterFacility
+							Where
+								FacilityId is not null
                             ')
                     END
 

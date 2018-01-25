@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
     public errorMessage: Message[];
     public loading: boolean;
     public recordCount: number;
+    public viewCount: number;
 
     constructor(statsservice: StatsService) {
         this.statsService = statsservice;
