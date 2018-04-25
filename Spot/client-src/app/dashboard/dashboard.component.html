@@ -1,5 +1,5 @@
 <p-breadcrumb [model]="bcItems" [home]="bcHome"></p-breadcrumb>
-<h3>{{ title }}  <span *ngIf="!loading">| Showing: {{sites.totalRecords }} or {{ recordCount }}</span></h3>
+<h3>{{ title }}  <span *ngIf="!loading">| Showing: {{sites.totalRecords }} of {{ recordCount }}</span></h3>
 <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export All" (click)="sites.exportCSV()"></button>
 <p-messages [(value)]="errorMessage"></p-messages>
 <p-dataTable [value]="facilities"

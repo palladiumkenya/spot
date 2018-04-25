@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using TimeAgo;
+using Humanizer;
+
 
 namespace Spot.StatsManagement.Core.Model
 {
@@ -13,7 +14,7 @@ namespace Spot.StatsManagement.Core.Model
         public DateTime? LastUpdate { get; set; }
         public Guid FacilityId { get; set; }
         public Facility Facility { get; set; }
-        public string TimeAgo => LastUpdate?.TimeAgo();
+        public string TimeAgo => LastUpdate?.Humanize(false);
 
         public override string ToString()
         {

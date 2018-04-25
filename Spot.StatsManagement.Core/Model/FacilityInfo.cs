@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using TimeAgo;
 
 namespace Spot.StatsManagement.Core.Model
 {
@@ -17,4 +16,5 @@ namespace Spot.StatsManagement.Core.Model
             return $"{County}";
         }
     }
+
 }
