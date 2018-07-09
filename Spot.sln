@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spot", "Spot\Spot.csproj", "{6926FFB6-4827-469A-8653-8DDC2D7EE357}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spot", "Spot\Spot.csproj", "{6926FFB6-4827-469A-8653-8DDC2D7EE357}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StatsManagement", "StatsManagement", "{FF9DA56C-92CB-4887-A755-7D44C4CE32A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spot.StatsManagement.Core", "Spot.StatsManagement.Core\Spot.StatsManagement.Core.csproj", "{5B40C4BB-6F1D-4A96-AB21-9AB257D537AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spot.StatsManagement.Core", "Spot.StatsManagement.Core\Spot.StatsManagement.Core.csproj", "{5B40C4BB-6F1D-4A96-AB21-9AB257D537AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spot.StatsManagement.Core.Tests", "Spot.StatsManagement.Core.Tests\Spot.StatsManagement.Core.Tests.csproj", "{895FE1BE-68EC-4F22-B94C-46173FF2731A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spot.StatsManagement.Core.Tests", "Spot.StatsManagement.Core.Tests\Spot.StatsManagement.Core.Tests.csproj", "{895FE1BE-68EC-4F22-B94C-46173FF2731A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7674689A-457E-4A3F-971D-BEEFBB11A012}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spot.StatsManagement.Infrastructure", "Spot.StatsManagement.Infrastructure\Spot.StatsManagement.Infrastructure.csproj", "{F69A58A4-5D42-4EE1-B4C8-4D8EFCF3DDF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spot.StatsManagement.Infrastructure", "Spot.StatsManagement.Infrastructure\Spot.StatsManagement.Infrastructure.csproj", "{F69A58A4-5D42-4EE1-B4C8-4D8EFCF3DDF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spot.StatsManagement.Infrastructure.Tests", "Spot.StatsManagement.Infrastructure.Tests\Spot.StatsManagement.Infrastructure.Tests.csproj", "{6BBDF813-029A-4FC7-96B4-39EF296080AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spot.StatsManagement.Infrastructure.Tests", "Spot.StatsManagement.Infrastructure.Tests\Spot.StatsManagement.Infrastructure.Tests.csproj", "{6BBDF813-029A-4FC7-96B4-39EF296080AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedKernel", "SharedKernel", "{18AE3887-0C3B-408A-9AA5-4D5DC76C5E2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spot.SharedKernel", "Spot.SharedKernel\Spot.SharedKernel.csproj", "{9AFC98AF-6EDE-45E6-B507-3EABDA6029E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spot.SharedKernel", "Spot.SharedKernel\Spot.SharedKernel.csproj", "{9AFC98AF-6EDE-45E6-B507-3EABDA6029E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spot.SharedKernel.Tests", "Spot.SharedKernel.Tests\Spot.SharedKernel.Tests.csproj", "{BF5E1EC1-523F-459C-8B74-988976C14D4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spot.SharedKernel.Tests", "Spot.SharedKernel.Tests\Spot.SharedKernel.Tests.csproj", "{BF5E1EC1-523F-459C-8B74-988976C14D4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
